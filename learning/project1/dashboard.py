@@ -122,7 +122,7 @@ Healthier farmland or parks. Plants actively photosynthesising.
 Thick canopy, irrigated fields. Only 5.5% of Ahmedabad in November — it's a semi-arid city.
 
 ---
-*Data: Sentinel-2 L2A, Copernicus Data Space. Scene date: Nov 2024.*
+*Data: Sentinel-2 L2A, Copernicus Data Space. Scene date: Nov 2025.*
 """)
 # --- Sidebar filters ---
 st.sidebar.header("Filters")
