@@ -84,7 +84,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-PARQUET = "learning/project1/data/ahmedabad_nov2024.parquet"
+PARQUET = "learning/project1/data/ahmedabad_nov2025.parquet"
 
 # --- Load data once, cache it ---
 # @st.cache_data tells Streamlit: run this function once, store the result
