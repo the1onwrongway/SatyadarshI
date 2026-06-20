@@ -204,5 +204,6 @@ st.dataframe(
     .sample(min(500, len(filtered)))
     .sort_values("ndvi", ascending=False)
     .reset_index(drop=True),
-    use_container_width=True
+    use_container_width=True,
+    hide_index=True
 )
