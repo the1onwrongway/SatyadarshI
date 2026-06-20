@@ -10,7 +10,7 @@ Indian space ecosystem.
 ## Current Projects
 
 ### learning/project1 — Sentinel-2 NDVI Pipeline (Jun 2026)
-End-to-end satellite data pipeline over Ahmedabad using real Sentinel-2 data.
+[Demo](https://satyadarshi.streamlit.app/) End-to-end satellite data pipeline over Ahmedabad using real Sentinel-2 data.
 
 **Stack:** Python, Sentinel Hub API, Rasterio, NumPy, DuckDB, Streamlit
 
