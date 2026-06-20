@@ -5,7 +5,11 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
 
-st.set_page_config(page_title="Ahmedabad NDVI Dashboard", layout="wide")
+st.set_page_config(
+    page_title="SatyadarshI — NDVI Pipeline",
+    page_icon="icon.svg",
+    layout="wide"
+)
 # Branded header — replace st.title() with this
 st.markdown("""
 <style>
