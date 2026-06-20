@@ -102,7 +102,28 @@ def load_data():
     return df
 
 df = load_data()
+with st.sidebar.expander("What does this mean?"):
+    st.markdown("""
+**NDVI** measures how much vegetation a piece of land has, using satellite light data. Scale runs -1 to +1.
 
+🔴 **Water** (below 0)  
+Water absorbs nearly all near-infrared light. That dark red strip in the map is the Sabarmati.
+
+🟡 **Urban / Bare soil** (0 to 0.2)  
+Concrete, roads, dry earth. Reflects both red and infrared similarly — no vegetation signal.
+
+🟢 **Sparse vegetation** (0.2 to 0.4)  
+Dry farmland, scrub, patchy green. Post-monsoon Ahmedabad outskirts look like this in November.
+
+🌿 **Moderate vegetation** (0.4 to 0.6)  
+Healthier farmland or parks. Plants actively photosynthesising.
+
+🌳 **Dense vegetation** (above 0.6)  
+Thick canopy, irrigated fields. Only 5.5% of Ahmedabad in November — it's a semi-arid city.
+
+---
+*Data: Sentinel-2 L2A, Copernicus Data Space. Scene date: Nov 2024.*
+""")
 # --- Sidebar filters ---
 st.sidebar.header("Filters")
 
