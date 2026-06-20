@@ -1,7 +1,7 @@
 import duckdb
 import time
 
-parquet_path = "data/ahmedabad_nov2024.parquet"
+parquet_path = "data/ahmedabad_nov2025.parquet"
 
 # DuckDB can query Parquet directly — no loading into memory first
 con = duckdb.connect()  # in-memory database, no file needed

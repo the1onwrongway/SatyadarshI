@@ -59,7 +59,7 @@ df = pd.DataFrame({
     "red":       red.ravel(),
     "nir":       nir.ravel(),
     "blue":      blue.ravel(),
-    "date":      "2024-11-01",   # the time window we requested
+    "date":      "2025-11-01",   # the time window we requested
 })
 
 print(f"\nDataFrame shape: {df.shape}")
@@ -67,7 +67,7 @@ print(df.head())
 print(f"\nData types:\n{df.dtypes}")
 
 # --- Save to Parquet ---
-output_path = "data/ahmedabad_nov2024.parquet"
+output_path = "data/ahmedabad_nov2025.parquet"
 df.to_parquet(output_path, index=False)
 
 size_mb = os.path.getsize(output_path) / (1024 * 1024)

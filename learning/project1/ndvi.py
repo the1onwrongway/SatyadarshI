@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
 # --- Load Parquet ---
-parquet_path = "data/ahmedabad_nov2024.parquet"
+parquet_path = "data/ahmedabad_nov2025.parquet"
 df = pd.read_parquet(parquet_path)
 
 print(f"Loaded {len(df)} pixels")
@@ -70,7 +70,7 @@ im = ax.imshow(
     vmax=0.7
 )
 plt.colorbar(im, ax=ax, label="NDVI")
-ax.set_title("NDVI — Ahmedabad (Nov 2024)")
+ax.set_title("NDVI — Ahmedabad (Nov 2025)")
 ax.set_xlabel("Column (West → East)")
 ax.set_ylabel("Row (North → South)")
 

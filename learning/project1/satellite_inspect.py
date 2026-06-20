@@ -58,7 +58,7 @@ rgb = np.stack([normalize(red), normalize(blue), normalize(blue)], axis=-1)
 
 plt.figure(figsize=(8, 6))
 plt.imshow(rgb)
-plt.title("Ahmedabad — Sentinel-2 (Nov 2024)")
+plt.title("Ahmedabad — Sentinel-2 (Nov 2025)")
 plt.axis("off")
 plt.savefig("data/ahmedabad_preview.png", dpi=150, bbox_inches="tight")
 plt.show()
