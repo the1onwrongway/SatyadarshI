@@ -13,7 +13,7 @@ importlib.reload(utils)
 load_dotenv()
 
 st.set_page_config(
-    page_title="SatyadarshI - Claims Verification",
+    page_title="SatyadarshI - FASAL",
     page_icon="icon.svg",
     layout="wide"
 )
