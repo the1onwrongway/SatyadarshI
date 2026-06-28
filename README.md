@@ -1,40 +1,124 @@
-# SatyadarshI
+# SatyadarshI ◈
 
-Personal knowledge and project repository. Built in public.
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://satyadarshi.streamlit.app/)
 
-## What this is
-A long-term collection of projects at the intersection of satellite data, 
-geospatial analytics, and ground data infrastructure; focused on the 
-Indian space ecosystem.
+SatyadarshI is a space data infrastructure repository focused on the Space ecosystem, satellite remote sensing, and automated agricultural validation.
 
-## Current Projects
+---
 
-### learning/project1 — Sentinel-2 NDVI Pipeline (Jun 2026)
-[Demo](https://satyadarshi.streamlit.app/) End-to-end satellite data pipeline over Ahmedabad using real Sentinel-2 data.
+## 📌 Release Versions
 
-**Stack:** Python, Sentinel Hub API, Rasterio, NumPy, DuckDB, Streamlit
+| Version | Name | Stage | Core Architecture | Focus |
+| :--- | :--- | :--- | :--- | :--- |
+| **v1.0.0** | **SatyadarshI** | MVP | Batch Spatial Pipeline (DuckDB + Parquet + Rasterio) | Sentinel-2 NDVI Analytics & Spatial Profiling (Ahmedabad) |
+| **v2.0.0** | **Fasals by SatyadarshI** | Beta | Dynamic API Ingestion & Calamity Analysis (Sentinel Hub CDSE) | Automated Crop Damage Claims Verification |
 
-**What it does:**
-- Downloads Sentinel-2 L2A imagery via Copernicus Data Space API
-- Reads and inspects GeoTIFF bands with Rasterio
-- Flattens 156,746 pixels into Parquet with real-world coordinates
-- Calculates NDVI (vegetation index) from Red and NIR bands
-- Queries results with DuckDB in under 10ms
-- Displays interactive dashboard with spatial map and urban gradient chart
+---
 
-**Key finding:** Ahmedabad's urban NDVI gradient is clearly visible — 
-vegetation on western outskirts (NDVI ~0.38), drops to urban core 
-(NDVI ~0.10), recovers on eastern outskirts (NDVI ~0.43).
+## 📁 Repository Structure
 
-### learning/project2 — FASAL: Crop Damage Claims Verification System (Jun 2026)
-Satellite-based claims verification engine using Sentinel-2 L2A constellations to assess agricultural crop damage post-calamity.
+```text
+space-data-pipeline/
+├── README.md                  # Project documentation
+└── learning/
+    ├── project1/              # v1.0.0 - SatyadarshI: Batch NDVI Pipeline
+    │   ├── data/              # GeoTIFF imagery & processed Parquet datasets
+    │   ├── download.py        # CDSE Sentinel-2 downloader
+    │   ├── flatten.py         # GeoTIFF raster band flattener (pixel -> coordinates)
+    │   ├── ndvi.py            # NDVI calculation and classification
+    │   ├── query.py           # DuckDB SQL analytical query client
+    │   ├── dashboard.py       # Streamlit exploration dashboard
+    │   └── requirements.txt   # Dependencies for v1
+    │
+    └── project2/              # v2.0.0 - Fasals by SatyadarshI: Claims Verification
+        ├── data/              # Baseline datasets
+        ├── sentinel_utils.py  # Spatial BBox mapping, CDSE querying & calamity simulation
+        ├── dashboard.py       # Claims verdict & True Color comparison dashboard
+        └── requirements.txt   # Dependencies for v2
+```
 
-**Stack:** Python, Sentinel Hub CDSE API, NumPy, Pandas, Matplotlib, Streamlit, Pillow
+---
 
-**What it does:**
-- Queries CDSE Sentinel Hub API for Sentinel-2 L2A imagery before and after reported calamity dates
-- Automates cloud correction and mosaicking using Sentinel Hub least-cloud-cover filtering
-- Computes pre- and post-calamity NDVI (Normalized Difference Vegetation Index) maps
-- Conducts spatial spectral analysis, evaluating Near-Infrared (NIR) and Blue band shifts to distinguish between flooding/water-logging (NIR absorption), cyclone/wind damage, and drought stress
-- Generates side-by-side True Color (RGB) imagery comparisons and NDVI difference heatmaps
-- Outputs automated claims interpretation verdicts, damage severity distributions, and downloadable CSV verification records
+## ⚙️ Global Configuration & API Setup
+
+Both versions authenticate with the **Copernicus Data Space Ecosystem (CDSE)**. To retrieve live satellite imagery:
+
+1. Register for a free account at [Copernicus Data Space Portal](https://dataspace.copernicus.eu/).
+2. Create an OAuth Client in your dashboard to obtain your `Client ID` and `Client Secret`.
+3. Set up a `.env` file in the subdirectory of the version you wish to run:
+
+```env
+SENTINEL_CLIENT_ID=your_oauth_client_id
+SENTINEL_CLIENT_SECRET=your_oauth_client_secret
+```
+
+---
+
+## 🚀 Get Started
+
+### v1.0.0: SatyadarshI (Batch NDVI Pipeline)
+An end-to-end satellite data processing pipeline over Ahmedabad, converting raw spatial imagery into fast-queryable Parquet columns.
+
+#### 1. Setup & Installation
+```bash
+cd learning/project1
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### 2. Running the Pipeline
+Run the steps in order to process the spatial data:
+```bash
+# Step 1: Download raw bands (Red, NIR, Blue) from CDSE
+python download.py
+
+# Step 2: Flatten pixel coordinates and export to Parquet
+python flatten.py
+
+# Step 3: Compute NDVI values and classify land cover
+python ndvi.py
+
+# Step 4: Run local DuckDB SQL query sample
+python query.py
+
+# Step 5: Spin up the interactive map dashboard
+streamlit run dashboard.py
+```
+*Live Demo:* [satyadarshi.streamlit.app](https://satyadarshi.streamlit.app/)
+
+---
+
+### v2.0.0: Fasals by SatyadarshI (Claims Verification)
+Satellite-based claims verification engine using Sentinel-2 L2A constellations to dynamically assess agricultural crop damage post-calamity (Floods, Droughts, Cyclones).
+
+#### 1. Setup & Installation
+```bash
+cd learning/project2
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### 2. Running the App
+Run the interactive claims processing dashboard:
+```bash
+streamlit run dashboard.py
+```
+- **Dynamic Mode**: Enter coordinates and calamity dates to fetch real-time pre/post disaster imagery.
+- **Simulated Mode**: If credentials are not specified, the system will run self-test verification simulations using historical Ahmedabad datasets.
+
+---
+
+## 🛠️ Stack & Dependencies
+- **Data Ingestion**: Copernicus Data Space API, `sentinelhub` Python SDK
+- **GIS / Spatial Math**: `rasterio` (GDAL-bindings), `numpy`, `pillow`
+- **Data Analytics**: `duckdb` (SQL querying under 10ms), `pandas`
+- **UI & Plotting**: `streamlit`, `matplotlib`
+
+---
+
+## 📜 License
+Distributed under the MIT License. See [LICENSE](LICENSE) or the repository root for more information.
