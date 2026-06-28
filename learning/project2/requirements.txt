@@ -1,0 +1,9 @@
+sentinelhub
+rasterio
+numpy
+pandas
+pyarrow
+duckdb
+streamlit
+python-dotenv
+matplotlib
